@@ -10,6 +10,71 @@
 
 <body>
 
+  <main>
+    <div class="sidebar">
+      <div class="log-container">
+        <img src="assets/images/book-open-page-variant-outline.svg" alt="">
+        <h1>LIBRARY</h1>
+      </div>
+      <div class="form">
+        <p>
+          <label for="title">Title</label>
+          <input type="text" id="title">
+        </p>
+        <p>
+          <label for="author">Author</label>
+          <input type="text" id="author">
+        </p>
+        <p>
+          <label for="number-of-pages">No. of Pages</label>
+          <input type="number" id="number-of-pages">
+        </p>
+        <fieldset>
+          <legend>Status</legend>
+          <p>
+            <input type="radio" value="read" id="done" class="radio" name="status" checked>
+            <label for="done">Done</label>
+          </p>
+          <p>
+            <input type="radio" value="unread" id="unread" class="radio" name="status">
+            <label for="unread">Unread</label>
+          </p>
+        </fieldset>
+        <div class="button-container">
+          <button>ADD BOOK</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <div>
+          <h4>Title</h4>
+          <div class="-res-title result">Harry Potter</div>
+        </div>
+        <div>
+          <h4>Author</h4>
+          <div class="res-author result">J.K Rowling</div>
+        </div>
+        <div>
+          <h4>No. of Pages</h4>
+          <div class="res-no-of-page result">749</div>
+        </div>
+        <div>
+          <h4>Status</h4>
+          <div class="res-status result">Done</div>
+        </div>
+        <div class="button-container">
+          <button class="edit-button">EDIT</button>
+          <button class="remove-button">REMOVE</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+
+  <script src="script.js" defer></script>
 </body>
 
 </html>
