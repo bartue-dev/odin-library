@@ -32,25 +32,29 @@
         <fieldset>
           <legend>Status</legend>
           <p>
-            <input type="radio" value="read" id="done" class="radio" name="status" checked>
+            <input type="radio" value="done" id="done" class="radio" name="status" checked>
             <label for="done">Done</label>
           </p>
           <p>
-            <input type="radio" value="unread" id="unread" class="radio" name="status">
-            <label for="unread">Unread</label>
+            <input type="radio" value="to-read" id="to-read" class="radio" name="status">
+            <label for="to-read">To read</label>
+          </p>
+          <p>
+            <input type="radio" value="incomplete" id="incomplete" class="radio" name="status">
+            <label for="incomplete">Incomplete</label>
           </p>
         </fieldset>
         <div class="button-container">
-          <button>ADD BOOK</button>
+          <button class="add-book-btn">ADD BOOK</button>
         </div>
       </div>
     </div>
 
     <div class="card-container">
-      <div class="card">
+      <!-- <div class="card">
         <div>
           <h4>Title</h4>
-          <div class="-res-title result">Harry Potter</div>
+          <div class="res-title result">Harry Potter</div>
         </div>
         <div>
           <h4>Author</h4>
@@ -68,7 +72,7 @@
           <button class="edit-button">EDIT</button>
           <button class="remove-button">REMOVE</button>
         </div>
-      </div>
+      </div> -->
     </div>
 
   </main>
