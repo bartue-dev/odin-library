@@ -101,13 +101,13 @@ main {
   width: 50px;
 }
 
-.sidebar .form {
+.sidebar form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.sidebar .form input:not(.radio) {
+.sidebar form input:not(.radio) {
   width: 100%;
   border-radius: 5px;
   border: 1px solid lightgray;
@@ -115,13 +115,13 @@ main {
   padding: 10px;
 }
 
-.sidebar .form fieldset p,
-.sidebar .form fieldset legend,
-.sidebar .form fieldset p > label {
+.sidebar form fieldset p,
+.sidebar form fieldset legend,
+.sidebar form fieldset p > label {
   margin-left: 10px;
 }
 
-.sidebar .form fieldset {
+.sidebar form fieldset {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid lightgray;
