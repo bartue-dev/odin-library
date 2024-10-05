@@ -103,10 +103,10 @@ function renderBook() {
 const inputTitle = document.querySelector("#title");
 const inputAuthor = document.querySelector("#author");
 const inputPages = document.querySelector("#number-of-pages");
-const addBookBtn = document.querySelector(".add-book-btn")
+const addBookBtn = document.querySelector(".add-book-btn");
+const form = document.querySelector("form")
 
-
-addBookBtn.addEventListener("click", (event) => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const titleValue = inputTitle.value;
@@ -118,7 +118,12 @@ addBookBtn.addEventListener("click", (event) => {
   newBook.status = statusValue;
   addBookToLibrary(newBook);
   renderBook();
-  
+
+/*   inputTitle.value = "";
+  inputAuthor.value = "";
+  inputPages.value = ""; */
+  form.reset();
+
   console.log("Book Added")
   console.log(statusValue)
 });
