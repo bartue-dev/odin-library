@@ -31,8 +31,6 @@ function renderBook() {
       }else {
         statusLabel = "Invalid status"
       }
-      
-      
     
     const card = document.createElement("div");
     card.classList.add("card");
