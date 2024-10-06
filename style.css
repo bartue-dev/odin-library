@@ -162,7 +162,9 @@ main {
   width: 250px;
   height: 380px;
   padding: 20px;
-
+  overflow-y: auto;
+  scrollbar-width: thin;
+  word-wrap: break-word;
 }
 
 .card-container .card > div:not(.card > .button-container) {
@@ -180,7 +182,8 @@ main {
   text-underline-offset: 4px;
 }
 
-.card-container .card .result {
+.card-container .card .result,
+.card-container .card .res-pages {
   font-style: italic;
 }
 
@@ -201,11 +204,19 @@ main {
   gap: 10px;
 }
 
-.card-container .card > .button-container .edit-button {
+.card-container .card > .button-container .edit-button,
+.save-button {
   background-color: #16a34a;
 }
 
 .card-container .card > .button-container .remove-button {
   background-color: #dc2626;
+}
+
+.edit-input {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
 }
 
