@@ -24,19 +24,15 @@ function renderBook() {
    
       if(newBook.status === "Done" || newBook.status === "done"){
         statusLabel = "Done"
-      }else {
-        statusLabel = "Invalid status"
-      }
-      if(newBook.status === "To read" || newBook.status === "to read"){
+      }else if(newBook.status === "To read" || newBook.status === "to read"){
         statusLabel = "To read"
-      }else {
-        statusLabel = "Invalid status"
-      }
-      if(newBook.status === "Incomplete" || newBook.status === "incomplete"){
+      }else if(newBook.status === "Incomplete" || newBook.status === "incomplete"){
         statusLabel = "Incomplete"
       }else {
         statusLabel = "Invalid status"
       }
+      
+      
     
     const card = document.createElement("div");
     card.classList.add("card");
