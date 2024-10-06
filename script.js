@@ -2,7 +2,7 @@ function Book(title, author, pages) {
   this.title = title,
   this.author = author,
   this.pages = pages,
-  this.status = "done" // initial value for read status
+  this.status = "Done" // initial value for read status
 }
 
 const sampleBook = new Book("Harry Potter", "J.K Rowling", 749);
@@ -21,19 +21,26 @@ function renderBook() {
   cardContainer.innerHTML = "";
   myLibrary.forEach((newBook, index) => {
     let statusLabel;
-
-    if(newBook.status === "done"){
-      statusLabel = "Done"
-    }
-    if(newBook.status === "to-read"){
-      statusLabel = "To read"
-    }
-    if(newBook.status === "incomplete"){
-      statusLabel = "Incomplete"
-    }
-
+   
+      if(newBook.status === "Done" || newBook.status === "done"){
+        statusLabel = "Done"
+      }else {
+        statusLabel = "Invalid status"
+      }
+      if(newBook.status === "To read" || newBook.status === "to read"){
+        statusLabel = "To read"
+      }else {
+        statusLabel = "Invalid status"
+      }
+      if(newBook.status === "Incomplete" || newBook.status === "incomplete"){
+        statusLabel = "Incomplete"
+      }else {
+        statusLabel = "Invalid status"
+      }
+    
     const card = document.createElement("div");
     card.classList.add("card");
+    card.dataset.index = index;
 
     const div1 = document.createElement("div");
     const title = document.createElement("h4");
@@ -53,7 +60,7 @@ function renderBook() {
     const noOfPages = document.createElement("h4");
     noOfPages.textContent = "No. Of Pages"
     const noOfPagesResult = document.createElement("div")
-    noOfPagesResult.classList.add("res-no-of-pages", "result");
+    noOfPagesResult.classList.add("res-pages");
     noOfPagesResult.textContent = newBook.pages;
 
     const div4 = document.createElement("div");
@@ -71,13 +78,66 @@ function renderBook() {
     const removeBtn = document.createElement("button");
     removeBtn.classList.add("remove-button")
     removeBtn.textContent = "REMOVE";
+
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "SAVE";
+    saveBtn.classList.add("save-button");
     
+    editBtn.addEventListener("click", (event) => {
+      //Retrieve a specific card
+      event.preventDefault();
+      const currentBook = myLibrary[index];
+      const cardBox = editBtn.closest(".card");
+  
+      for(let key in currentBook){
+        if(currentBook.hasOwnProperty(key)) {
+  
+          const cardResult = cardBox.querySelector(`.res-${key}`);
+  
+          const newInput = document.createElement("input");
+          newInput.value = currentBook[key];
+          newInput.classList.add(`${key}-card-input`, "edit-input");
+
+          if(key === "pages"){
+            newInput.type = "number";
+            newInput.min = 1;
+          }else {
+            newInput.type = "text";
+          }
+          
+          if(cardResult){
+            cardResult.replaceWith(newInput);
+          }
+  
+          newInput.focus();
+  
+          newInput.addEventListener("keyup", (event) => {
+            if(event.key === "Enter"){
+                currentBook[key] = key === "pages" ? parseInt(newInput.value) : newInput.value;
+              renderBook();
+              
+            }  
+          });
+  
+          editBtn.replaceWith(saveBtn);
+         
+          saveBtn.addEventListener("click", () => {
+            currentBook[key] = key === "pages" ? parseInt(newInput.value) : newInput.value;
+            renderBook();
+          });
+        }
+      }
+  
+      console.log("edit button is clicked")
+  
+    });
 
     removeBtn.addEventListener("click", () => {
-      myLibrary.splice(index, 1);
+      const dataIndex = card.dataset.index;
+      myLibrary.splice(dataIndex, 1);
       renderBook();
-      console.log("Book Remove")
-    })
+      console.log(`Book Remove ${dataIndex}`)
+    });
 
     div1.appendChild(title);
     div1.appendChild(titleResult);
@@ -98,7 +158,7 @@ function renderBook() {
 
   });
 }
-
+ 
 
 const inputTitle = document.querySelector("#title");
 const inputAuthor = document.querySelector("#author");
@@ -113,9 +173,10 @@ form.addEventListener("submit", (event) => {
   const authorValue = inputAuthor.value;
   const pagesValue = parseInt(inputPages.value, 10);
   const statusValue = document.querySelector('input[name="status"]:checked').value;
+  const firstStatus = statusValue.split(",")[0].trim();
 
   const newBook = new Book(titleValue, authorValue, pagesValue);
-  newBook.status = statusValue;
+  newBook.status = firstStatus;
   addBookToLibrary(newBook);
   renderBook();
 
