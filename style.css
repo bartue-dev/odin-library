@@ -220,3 +220,8 @@ main {
   padding: 5px;
 }
 
+.status-result-box {
+  display: flex;
+  justify-content: space-between;
+}
+
