@@ -21,8 +21,9 @@ function addBookToLibrary(newBook) {
 
 
 const cardContainer = document.querySelector(".card-container");
+//add a function for the card or book card
 function renderBook() {
-  cardContainer.innerHTML = "";
+  cardContainer.innerHTML = ""; // to prevent duplicates
   myLibrary.forEach((newBook, index) => {
     let statusLabel;
    
@@ -157,6 +158,7 @@ function renderBook() {
   
     }); */
 
+    //toggle event listener. Allows the user to change the status by clicking the icon
     toggleIconContainer.addEventListener("click", () => {
       if(cardStatusResult.textContent === "Done" || cardStatusResult.textContent === "done"){
         cardStatusResult.textContent = "To read";
@@ -169,6 +171,7 @@ function renderBook() {
       console.log(cardStatusResult.textContent)
     });
 
+    //allows the user to remove a book or a card
     removeBtn.addEventListener("click", () => {
       const dataIndex = card.dataset.index;
       myLibrary.splice(dataIndex, 1);
@@ -206,6 +209,7 @@ const inputPages = document.querySelector("#number-of-pages");
 const addBookBtn = document.querySelector(".add-book-btn");
 const form = document.querySelector("form")
 
+//form submit event listener
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -229,7 +233,7 @@ form.addEventListener("submit", (event) => {
   console.log(statusValue)
 });
 
-
+//initial render of the renderBook function
 renderBook();
 
  
