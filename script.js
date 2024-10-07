@@ -207,7 +207,7 @@ const inputTitle = document.querySelector("#title");
 const inputAuthor = document.querySelector("#author");
 const inputPages = document.querySelector("#number-of-pages");
 const addBookBtn = document.querySelector(".add-book-btn");
-const form = document.querySelector("form")
+const form = document.querySelector("form");
 
 //form submit event listener
 form.addEventListener("submit", (event) => {
