@@ -209,6 +209,14 @@ const inputPages = document.querySelector("#number-of-pages");
 const addBookBtn = document.querySelector(".add-book-btn");
 const form = document.querySelector("form");
 
+inputPages.addEventListener("keyup", () => {
+  if(parseInt(parseInt(inputPages.value)) < 1){
+    inputPages.setCustomValidity("Invalid number of Pages")
+  }else {
+    inputPages.setCustomValidity("");
+  }
+});
+
 //form submit event listener
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -218,6 +226,12 @@ form.addEventListener("submit", (event) => {
   const pagesValue = parseInt(inputPages.value, 10);
   const statusValue = document.querySelector('input[name="status"]:checked').value;
   const firstStatus = statusValue.split(",")[0].trim();
+
+  if(pagesValue < 1){
+    inputPages.setCustomValidity("Invalid number of Pages")
+  }else {
+    inputPages.setCustomValidity("");
+  }
 
   const newBook = new Book(titleValue, authorValue, pagesValue);
   newBook.status = firstStatus;
