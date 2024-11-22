@@ -125,6 +125,9 @@ main {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .sidebar .button-container {
@@ -141,6 +144,17 @@ main {
   background-color: #0284c7;
   color: white;
   cursor: pointer;
+}
+
+:is(.error-title, .error-author, .error-pages) {
+  display: none;
+  color: #dc2626;
+  margin-top: -15px;
+  margin-bottom: -15px;
+}
+
+:is(.error-title.error, .error-author.error, .error-pages.error) {
+ display: block;
 }
 
 
