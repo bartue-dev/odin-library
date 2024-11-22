@@ -15,6 +15,7 @@ class Book {
 
   addBookToLibrary(newBook) {
     myLibrary.push(newBook)
+    console.log(myLibrary)
   }
 
   renderBook() {
@@ -140,6 +141,11 @@ class HandleForm {
     this.inputPages = document.querySelector("#number-of-pages");
     this.addBookBtn = document.querySelector(".add-book-btn");
     this.form = document.querySelector("form");
+    this.errorTitle = document.querySelector(".error-title");
+    this.errorAuthor = document.querySelector(".error-author");
+    this.errorPages = document.querySelector(".error-pages");
+    
+
 
     this.inputNumValidation();
     this.eventListeners();
@@ -147,33 +153,65 @@ class HandleForm {
 
   eventListeners() {
     this.form.addEventListener("submit", (event) => {
-      event.preventDefault();
 
-      const titleValue = this.inputTitle.value;
-      const authorValue = this.inputAuthor.value;
-      const pagesValue = parseInt(this.inputPages.value, 10);
-      const statusValue = document.querySelector('input[name="status"]:checked').value;
-      const firstStatus = statusValue.split(",")[0].trim();
+        this.inputValidation();
 
-      const newBook = new Book(titleValue, authorValue, pagesValue);
-      newBook.status = firstStatus;
-      newBook.addBookToLibrary(newBook);
-      newBook.renderBook();
+        event.preventDefault();
 
-      this.form.reset();
-
-      console.log("Book Added");
+        const titleValue = this.inputTitle.value;
+        const authorValue = this.inputAuthor.value;
+        const pagesValue = parseInt(this.inputPages.value, 10);
+        const statusValue = document.querySelector('input[name="status"]:checked').value;
+        const firstStatus = statusValue.split(",")[0].trim();
+  
+        const newBook = new Book(titleValue, authorValue, pagesValue);
+        newBook.status = firstStatus;
+        newBook.addBookToLibrary(newBook);
+        newBook.renderBook();
+  
+        this.form.reset();
+  
+        console.log("Book Added");
+      
+      
     });
   }
 
   inputNumValidation() {
     this.inputPages.addEventListener("keyup", () => {
-      if(parseInt(this.inputPages.value) < 1){
+      if(this.inputPages.validity.rangeUnderflow){
         this.inputPages.setCustomValidity("Invalid number of Pages")
       }else {
         this.inputPages.setCustomValidity("");
       }
     });
+  }
+
+  inputValidation() {
+    let isValid = true;
+
+    if (this.inputTitle.value === "") {
+        this.errorTitle.classList.add("error");
+        isValid = false;
+    } else {
+      this.errorTitle.classList.remove("error");
+    }
+
+    if (this.inputAuthor.value === "") {
+      this.errorText.classList.add("error");
+      isValid = false;
+    } else {
+    this.errorText.classList.remove("error");
+    }
+
+    if (this.inputPages.value === "") {
+      this.errorPages.classList.add("error");
+      isValid = false;
+    } else {
+      this.errorPages.classList.remove("error");
+    }
+
+    return isValid;
   }
 }
 
