@@ -17,32 +17,35 @@
         <h1>LIBRARY</h1>
       </div>
       <form>
-        <p>
+        <div>
           <label for="title">Title</label>
-          <input type="text" id="title" required>
-        </p>
-        <p>
+          <input type="text" id="title">
+        </div>
+        <div class="error-title">Invalid Title</div>
+        <div>
           <label for="author">Author</label>
-          <input type="text" id="author" required>
-        </p>
-        <p>
+          <input type="text" id="author">
+        </div>
+        <div class="error-author">Invalid Author</div>
+        <div>
           <label for="number-of-pages">No. of Pages</label>
-          <input type="number" id="number-of-pages" min="1" required>
-        </p>
+          <input type="number" id="number-of-pages" min="1">
+        </div>
+        <div class="error-pages">Invalid No. of Pages</div>
         <fieldset>
           <legend>Status</legend>
-          <p>
+          <div>
             <input type="radio" value="Done, done" id="done" class="radio" name="status">
             <label for="done">Done</label>
-          </p>
-          <p>
-            <input type="radio" value="To read, to read" id="to-read" class="radio" name="status" checked required>
+          </div>
+          <div>
+            <input type="radio" value="To read, to read" id="to-read" class="radio" name="status" checked>
             <label for="to-read">To read</label>
-          </p>
-          <p>
+          </div>
+          <div>
             <input type="radio" value="Incomplete, incomplete" id="incomplete" class="radio" name="status">
             <label for="incomplete">Incomplete</label>
-          </p>
+          </div>
         </fieldset>
         <div class="button-container">
           <button type="submit" class="add-book-btn">ADD BOOK</button>
